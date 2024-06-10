@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html><head lang="en"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>Diff-ID</title>
+
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- <meta property="og:image" content="img/cats.png">
+    <meta property="og:image:type" content="image/png"> -->
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ku-cvlab.github.io/Diff-ID/">
+    <meta property="og:title" content="Pose-Diversified Augmentation with Diffusion Model for Person Re-Identification">
+    <meta property="og:description" content="">
+
+    <!-- <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pose-Diversified Augmentation with Diffusion Model for Person Re-Identification">
+    <meta name="twitter:description" content="Person re-identification (Re-ID) often faces challenges due to variations in human pose and camera viewpoint, which significantly affects the appearance variations of individuals across images. Existing datasets often lack diversity and scalability of these human pose and camera viewpoint, hindering the generalization of Re-ID models to new camera networks. Previous methods have attempted to address these issues by using data augmentation, but they rely on poses already present in the dataset, failing to effectively reduce the pose bias in the dataset. In this paper, we propose \textbf{Diff-ID}, a novel approach that augments training data with sparse and limited poses that are underrepresented in the original distribution. By leveraging the knowledge of pre-trained large-scale generative models like Stable Diffusion, we successfully generate realistic images with diverse human poses and camera viewpoints. Specifically, our objective is to create a training dataset that enables existing Re-ID models to learn features debiased to pose variations. Qualitative results demonstrate the effectiveness of our method in addressing pose bias and enhancing the generalizability of Re-ID models compared to other approaches. The performance gains achieved by training Re-ID models on our offline augmented dataset highlight the potential of our proposed framework in improving the scalability and generalizability of person Re-ID models.">
+    <meta name="twitter:image" content="img/cats.png"> -->
+
+
+    <!-- mirror: F0%9F%AA%9E&lt -->
+    <!-- <link rel="icon" type="image/x-icon" href="img/cat.ico"> -->
+    <!-- <link rel="icon" href="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text y=%22.9em%22 font-size=%2290%22&gt;%E2%9C%A8&lt;/text&gt;&lt;/svg&gt;"> -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/codemirror.min.css">
+    <link rel="stylesheet" href="css/app.css">
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/codemirror.min.js"></script>
+    <script src="js/clipboard.min.js"></script>
+    <script src="js/video_comparison.js"></script>
+    <script src="js/app.js"></script>
+</head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QVFM103BVF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-QVFM103BVF');
+</script>
+
+<body>
+    <div class="container" id="header" style="text-align: center; margin: auto;">
+        <div class="row" id="title-row" style="max-width: 100%; margin: 0 auto; display: inline-block">
+            <h2 class="col-md-12 text-center" id="title">
+                Pose-Diversified Augmentation with Diffusion Model <br> for Person Re-Identification <br>
+                <small>
+                    Arxiv 2024
+                </small>
+            </h2>
+        </div>
+        <div class="row" id="author-row" style="margin:0 auto;">
+            <div class="col-md-12 text-center" style="display: table; margin:0 auto">
+                <a style="text-decoration:none" href="">
+                    In\`es Hyeonsu&nbsp;Kim<sup>1,</sup>*
+                </a>
+                <span style="padding-left: 20px;"></span>
+                <a style="text-decoration:none" href="">
+                    JoungBin&nbsp;Lee<sup>1,</sup>*
+                </a>
+                <span style="padding-left: 20px;"></span>
+                <a style="text-decoration:none" href="">
+                    Soowon&nbsp;Son<sup>1</sup>
+                </a>
+                <span style="padding-left: 20px;"></span>
+                <a style="text-decoration:none" href="">
+                    Woojeong&nbsp;Jin<sup>1</sup>
+                </a><br>
+                <a style="text-decoration:none" href="">
+                    Kyusun&nbsp;Cho<sup>1</sup>
+                </a>
+                <span style="padding-left: 20px;"></span>
+                <a style="text-decoration:none" href="">
+                    Junyoung&nbsp;Seo<sup>1</sup>
+                </a>
+                <span style="padding-left: 20px;"></span>
+                <a style="text-decoration:none" href="">
+                    Min-Seop&nbsp;Kwak<sup>1</sup>
+                </a>
+                <span style="padding-left: 20px;"></span>
+                <a style="text-decoration:none" href="">
+                    Seokju&nbsp;Cho<sup>1</sup>
+                </a><br>
+                <a style="text-decoration:none" href="">
+                    JeonYeol&nbsp;Baek<sup>2</sup>
+                </a>
+                <span style="padding-left: 20px;"></span>
+                <a style="text-decoration:none" href="">
+                    Byeongwon&nbsp;Lee<sup>2</sup>
+                </a>
+                <span style="padding-left: 20px;"></span>
+                <a style="text-decoration:none" href="https://cvlab.korea.ac.kr">
+                    Seungryong&nbsp;Kim<sup>1</sup>
+                </a>
+                <table class="author-table" id="author-table">
+                    <tr>
+                        <td>
+                            <sup>1</sup>Korea University
+                        </td>
+                        <td>
+                            <sup>2</sup>SKT
+                        </td>
+                    </tr>
+                </table>
+                <small>
+                    *Equal Contribution
+                </small>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.getElementById('author-row').style.maxWidth = document.getElementById("title-row").clientWidth + 'px';
+    </script>
+    <div class="container" id="main">
+        <div class="row">
+                <div class="col-sm-6 col-sm-offset-3 text-center">
+                    <ul class="nav nav-pills nav-justified">
+                        <li>
+                            <a href="https://arxiv.org/abs/2303.11797">
+                            <img src="./img/paper_image.png" height="60px">
+                                <h4><strong>Paper</strong></h4>
+                            </a>
+                        </li>
+                        <!-- <li>
+                            <a href="https://youtu.be/qrdRH9irAlk">
+                            <img src="./img/youtube_icon.png" height="60px">
+                                <h4><strong>Video</strong></h4>
+                            </a>
+                        </li> -->
+                        <!-- <li>
+                            <a href="https://storage.googleapis.com/gresearch/refraw360/ref.zip" target="_blank">
+                            <image src="img/database_icon.png" height="60px">
+                                <h4><strong>Shiny Dataset</strong></h4>
+                            </a>
+                        </li>-->
+                        <li>
+                            <a href="https://github.com/KU-CVLAB/Diff-ID" target="_blank">
+                                <img src="img/github.png" height="60px">
+                                    <h4><strong>Code</strong></h4>
+                            </a>
+                        </li>
+                        <!-- <li>
+                            <a href="https://huggingface.co/spaces/hamacojr/CAT-Seg" target="_blank">
+                            <image src="img/huggingface_logo-noborder.svg" height="60px">
+                                <h4><strong>Demo</strong></h4>
+                            </a>
+                        </li> -->
+                    </ul>
+                </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="text-center">
+                    <video id="ide" width="100%" playsinline autoplay controls loop muted>
+                        <source src="video/example_animation.mp4" type="video/mp4" />
+                    </video>
+                </div>
+
+                <div class="text-justify">
+                    Caption for video
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Abstract
+                </h3>
+                <p class="text-justify">
+                    Person re-identification (Re-ID) often faces challenges due to variations in human pose and camera viewpoint, which significantly affects the appearance variations of individuals across images. Existing datasets often lack diversity and scalability of these human pose and camera viewpoint, hindering the generalization of Re-ID models to new camera networks. Previous methods have attempted to address these issues by using data augmentation, but they rely on poses already present in the dataset, failing to effectively reduce the pose bias in the dataset. In this paper, we propose \textbf{Diff-ID}, a novel approach that augments training data with sparse and limited poses that are underrepresented in the original distribution. By leveraging the knowledge of pre-trained large-scale generative models like Stable Diffusion, we successfully generate realistic images with diverse human poses and camera viewpoints. Specifically, our objective is to create a training dataset that enables existing Re-ID models to learn features debiased to pose variations. Qualitative results demonstrate the effectiveness of our method in addressing pose bias and enhancing the generalizability of Re-ID models compared to other approaches. The performance gains achieved by training Re-ID models on our offline augmented dataset highlight the potential of our proposed framework in improving the scalability and generalizability of person Re-ID models.    
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Overview
+                </h3>
+                <div class="text-center">
+                    <img src="./img/motivation.png" width="100%">
+                </div>
+                <div class="text-justify">
+                    Upon observing the highly biased viewpoint and human
+                    pose distributions in training dataset, we augment the dataset by manipulating SMPL body shapes
+                    and feeding the rendered shapes into a generative model to fill in sparsely distributed poses and
+                    viewpoints. With this augmented dataset, we can train a Re-ID model that is robust to viewpoint and
+                    human pose biases.
+                </div>
+                <br>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Main Architecture
+                </h3>
+                <div class="text-center">
+                    <img src="./img/main_figure.png" width="100%">
+                </div>
+                <div class="text-justify">
+                    Given the viewpoint and pose distributions, we first render the body shape sampled from the distribution using SMPL, 
+                    generating the corresponding skeleton, depth map, and normal maps. These conditions, along with a reference image 
+                    for identity preservation, are then fed into Diff-ID. Diff-ID consists of two branches: the reference U-Net processes 
+                    the identity information from the reference image, while the denoising U-Net generates a person with the same identity, 
+                    given the input conditions. The denoising U-Net generates images by iterating through the denoising process.
+                </div>
+                <br>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    The Effect of Viewpoint and Human Pose Augmentation 
+                </h3>
+                
+                <div class="text-center">
+                    <img src="./img/dist_vis.png" width="100%">
+                </div>
+                <div class="text-justify">
+                    Visualization of camera viewpoint and human pose distributions for the Market-1501 and
+                    DukeMTMC-reID datasets. The left figures (i) display the camera viewpoint distribution derived
+                    from SMPL, while the right figures (ii) illustrate t-SNE visualizations of the human pose distributions.
+                    These visualizations demonstrate that our pose augmentation successfully
+                    diversifies both viewpoint and human pose distributions.
+                </div>
+                <br>
+                <div class="text-center">
+                    <img src="./img/design_table.png" width="100%">
+                </div>
+                <div class="text-justify">
+                    Quantitative validation of our design choices.
+                </div>
+                <br>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Qualitative Results
+                </h3>
+
+                <div class="text-justify">
+                    Given a reference image, we sample five images
+                    generated by our method. These outputs demonstrate the model’s capability to produce diverse and
+                    realistic variations. Ref. denotes the reference image.
+                </div>
+                <div class="text-center">
+                    <img src="./img/generated_images.png" width="100%">
+                </div>
+                <br>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Comparison with GAN
+                </h3>
+                <div class="text-center">
+                    <img src="./img/compare_quals.png" width="100%">
+                </div>
+                <div class="text-justify">
+                    Qualitative comparison for the generated output of FD-GAN and XingGAN. Our method demonstrates 
+                    significantly better fidelity while faithfully capturing the identity of the person in the reference 
+                    image and accurately following the target pose.
+                </div>
+                <br>
+                <div class="text-center">
+                    <img src="./img/compare_table.png" width="50%">
+                </div>
+                <div class="text-justify">
+                    Quantitative comparison on standard Re-ID benchmarks.
+                    Note that the Re-ID Experts in the first row group are not directly comparable, as our primary focus is on dataset generation.
+                    For augmentation-based methods, we train the same Re-ID model on the datasets generated by each
+                    method to ensure a fair comparison. *: The authors did not provide a pre-trained model.
+                </div>
+                <br>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Citation
+                </h3>
+                <div class="form-group col-md-10 col-md-offset-1">
+                    <textarea id="bibtex" class="form-control" readonly>
+                        citation
+                    </textarea>
+                </div>
+            </div>
+        </div>
+<!--             
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Citation
+                </h3>
+                <div class="form-group col-md-10 col-md-offset-1">
+                    <textarea id="bibtex" class="form-control" readonly>
+@article{verbin2022refnerf,
+    title={{Ref-NeRF}: Structured View-Dependent Appearance for
+           Neural Radiance Fields},
+    author={Dor Verbin and Peter Hedman and Ben Mildenhall and
+            Todd Zickler and Jonathan T. Barron and Pratul P. Srinivasan},
+    journal={CVPR},
+    year={2022}
+}</textarea>
+                </div>
+            </div>
+        </div> -->
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Acknowledgements
+                </h3>
+                <p class="text-justify">
+                <!-- We would like to thank Lior Yariv and Kai Zhang for helping us evaluate their methods, and Ricardo Martin-Brualla for helpful comments on our text. DV is supported by the National Science Foundation under Cooperative Agreement PHY-2019786 (an NSF AI Institute, <a href="http://iaifi.org">http://iaifi.org</a>) -->
+                    <!-- <br> -->
+                The website template was borrowed from <a href="http://mgharbi.com/">Michaël Gharbi</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+</body></html>
