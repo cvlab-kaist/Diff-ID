@@ -62,7 +62,7 @@
         <div class="row" id="author-row" style="margin:0 auto;">
             <div class="col-md-12 text-center" style="display: table; margin:0 auto">
                 <a style="text-decoration:none" href="">
-                    In\`es Hyeonsu&nbsp;Kim<sup>1,</sup>*
+                    Ines Hyeonsu&nbsp;Kim<sup>1,</sup>*
                 </a>
                 <span style="padding-left: 20px;"></span>
                 <a style="text-decoration:none" href="">
@@ -158,39 +158,12 @@
                     </ul>
                 </div>
         </div>
-
-
+        
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
-                <div class="text-center">
-                    <video id="ide" width="100%" playsinline autoplay controls loop muted>
-                        <source src="video/example_animation.mp4" type="video/mp4" />
-                    </video>
-                </div>
-
-                <div class="text-justify">
-                    Caption for video
-                </div>
-            </div>
-        </div>
-
-
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <h3>
-                    Abstract
-                </h3>
-                <p class="text-justify">
-                    Person re-identification (Re-ID) often faces challenges due to variations in human pose and camera viewpoint, which significantly affects the appearance variations of individuals across images. Existing datasets often lack diversity and scalability of these human pose and camera viewpoint, hindering the generalization of Re-ID models to new camera networks. Previous methods have attempted to address these issues by using data augmentation, but they rely on poses already present in the dataset, failing to effectively reduce the pose bias in the dataset. In this paper, we propose \textbf{Diff-ID}, a novel approach that augments training data with sparse and limited poses that are underrepresented in the original distribution. By leveraging the knowledge of pre-trained large-scale generative models like Stable Diffusion, we successfully generate realistic images with diverse human poses and camera viewpoints. Specifically, our objective is to create a training dataset that enables existing Re-ID models to learn features debiased to pose variations. Qualitative results demonstrate the effectiveness of our method in addressing pose bias and enhancing the generalizability of Re-ID models compared to other approaches. The performance gains achieved by training Re-ID models on our offline augmented dataset highlight the potential of our proposed framework in improving the scalability and generalizability of person Re-ID models.    
-                </p>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <h3>
+                <!-- <h3>
                     Overview
-                </h3>
+                </h3> -->
                 <div class="text-center">
                     <img src="./img/motivation.png" width="100%">
                 </div>
@@ -209,6 +182,20 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <h3>
+                    Abstract
+                </h3>
+                <p class="text-justify">
+                    Person re-identification (Re-ID) often faces challenges due to variations in human pose and camera viewpoint, which significantly affects the appearance variations of individuals across images. Existing datasets often lack diversity and scalability of these human pose and camera viewpoint, hindering the generalization of Re-ID models to new camera networks. Previous methods have attempted to address these issues by using data augmentation, but they rely on poses already present in the dataset, failing to effectively reduce the pose bias in the dataset. In this paper, we propose \textbf{Diff-ID}, a novel approach that augments training data with sparse and limited poses that are underrepresented in the original distribution. By leveraging the knowledge of pre-trained large-scale generative models like Stable Diffusion, we successfully generate realistic images with diverse human poses and camera viewpoints. Specifically, our objective is to create a training dataset that enables existing Re-ID models to learn features debiased to pose variations. Qualitative results demonstrate the effectiveness of our method in addressing pose bias and enhancing the generalizability of Re-ID models compared to other approaches. The performance gains achieved by training Re-ID models on our offline augmented dataset highlight the potential of our proposed framework in improving the scalability and generalizability of person Re-ID models.    
+                </p>
+            </div>
+    
+        </div>
+        <br>
+        <br>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
                     Main Architecture
                 </h3>
                 <div class="text-center">
@@ -222,6 +209,7 @@
                     given the input conditions. The denoising U-Net generates images by iterating through the denoising process.
                 </div>
                 <br>
+                <br>
             </div>
         </div>
 
@@ -230,7 +218,13 @@
                 <h3>
                     The Effect of Viewpoint and Human Pose Augmentation 
                 </h3>
-                
+                <div class="text-center">
+                    <img src="./img/design_table.png" width="100%">
+                </div>
+                <div class="text-justify">
+                    Quantitative validation of our design choices.
+                </div>
+                <br>
                 <div class="text-center">
                     <img src="./img/dist_vis.png" width="100%">
                 </div>
@@ -242,15 +236,10 @@
                     diversifies both viewpoint and human pose distributions.
                 </div>
                 <br>
-                <div class="text-center">
-                    <img src="./img/design_table.png" width="100%">
-                </div>
-                <div class="text-justify">
-                    Quantitative validation of our design choices.
-                </div>
                 <br>
             </div>
         </div>
+        
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <h3>
@@ -263,8 +252,9 @@
                     realistic variations. Ref. denotes the reference image.
                 </div>
                 <div class="text-center">
-                    <img src="./img/generated_images.png" width="100%">
+                    <img src="./img/generated_images.png" width="80%">
                 </div>
+                <br>
                 <br>
             </div>
         </div>
@@ -275,7 +265,7 @@
                     Comparison with GAN
                 </h3>
                 <div class="text-center">
-                    <img src="./img/compare_quals.png" width="100%">
+                    <img src="./img/compare_quals.png" width="80%">
                 </div>
                 <div class="text-justify">
                     Qualitative comparison for the generated output of FD-GAN and XingGAN. Our method demonstrates 
@@ -284,7 +274,7 @@
                 </div>
                 <br>
                 <div class="text-center">
-                    <img src="./img/compare_table.png" width="50%">
+                    <img src="./img/compare_table.png" width="40%">
                 </div>
                 <div class="text-justify">
                     Quantitative comparison on standard Re-ID benchmarks.
@@ -308,25 +298,6 @@
                 </div>
             </div>
         </div>
-<!--             
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <h3>
-                    Citation
-                </h3>
-                <div class="form-group col-md-10 col-md-offset-1">
-                    <textarea id="bibtex" class="form-control" readonly>
-@article{verbin2022refnerf,
-    title={{Ref-NeRF}: Structured View-Dependent Appearance for
-           Neural Radiance Fields},
-    author={Dor Verbin and Peter Hedman and Ben Mildenhall and
-            Todd Zickler and Jonathan T. Barron and Pratul P. Srinivasan},
-    journal={CVPR},
-    year={2022}
-}</textarea>
-                </div>
-            </div>
-        </div> -->
 
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
