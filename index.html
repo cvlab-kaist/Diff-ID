@@ -8,23 +8,13 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- <meta property="og:image" content="img/cats.png">
-    <meta property="og:image:type" content="image/png"> -->
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://ku-cvlab.github.io/Diff-ID/">
     <meta property="og:title" content="Pose-Diversified Augmentation with Diffusion Model for Person Re-Identification">
     <meta property="og:description" content="">
-    <!-- <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Pose-Diversified Augmentation with Diffusion Model for Person Re-Identification">
-    <meta name="twitter:description" content="Person re-identification (Re-ID) often faces challenges due to variations in human pose and camera viewpoint, which significantly affects the appearance variations of individuals across images. Existing datasets often lack diversity and scalability of these human pose and camera viewpoint, hindering the generalization of Re-ID models to new camera networks. Previous methods have attempted to address these issues by using data augmentation, but they rely on poses already present in the dataset, failing to effectively reduce the pose bias in the dataset. In this paper, we propose \textbf{Diff-ID}, a novel approach that augments training data with sparse and limited poses that are underrepresented in the original distribution. By leveraging the knowledge of pre-trained large-scale generative models like Stable Diffusion, we successfully generate realistic images with diverse human poses and camera viewpoints. Specifically, our objective is to create a training dataset that enables existing Re-ID models to learn features debiased to pose variations. Qualitative results demonstrate the effectiveness of our method in addressing pose bias and enhancing the generalizability of Re-ID models compared to other approaches. The performance gains achieved by training Re-ID models on our offline augmented dataset highlight the potential of our proposed framework in improving the scalability and generalizability of person Re-ID models.">
-    <meta name="twitter:image" content="img/cats.png"> -->
 
-
-    <!-- mirror: F0%9F%AA%9E&lt -->
-    <!-- <link rel="icon" type="image/x-icon" href="img/cat.ico"> -->
-    <!-- <link rel="icon" href="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text y=%22.9em%22 font-size=%2290%22&gt;%E2%9C%A8&lt;/text&gt;&lt;/svg&gt;"> -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/codemirror.min.css">
@@ -38,16 +28,6 @@
     <script src="js/app.js"></script>
 </head>
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-QVFM103BVF"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-QVFM103BVF');
-</script>
-
 <body>
     <div class="container" id="header" style="text-align: center; margin: auto;">
         <div class="row" id="title-row" style="max-width: 100%; margin: 0 auto; display: inline-block">
@@ -60,26 +40,26 @@
         </div>
         <div class="row" id="author-row" style="margin:0 auto;">
             <div class="col-md-12 text-center" style="display: table; margin:0 auto">
-                <a style="text-decoration:none" href="">
-                    Ines Hyeonsu&nbsp;Kim<sup>1,</sup>*
+                <a style="text-decoration:none" href="https://ines-hyeonsu-kim.github.io/">
+                    Ine&#768;s Hyeonsu&nbsp;Kim<sup>1,</sup>*
                 </a>
                 <span style="padding-left: 20px;"></span>
                 <a style="text-decoration:none" href="">
                     JoungBin&nbsp;Lee<sup>1,</sup>*
                 </a>
                 <span style="padding-left: 20px;"></span>
-                <a style="text-decoration:none" href="">
+                <a style="text-decoration:none" href="https://github.com/soow0n">
                     Soowon&nbsp;Son<sup>1</sup>
                 </a>
                 <span style="padding-left: 20px;"></span>
-                <a style="text-decoration:none" href="">
+                <a style="text-decoration:none" href="https://github.com/wooj0216">
                     Woojeong&nbsp;Jin<sup>1</sup>
                 </a><br>
                 <a style="text-decoration:none" href="">
                     Kyusun&nbsp;Cho<sup>1</sup>
                 </a>
                 <span style="padding-left: 20px;"></span>
-                <a style="text-decoration:none" href="">
+                <a style="text-decoration:none" href="https://j0seo.github.io/">
                     Junyoung&nbsp;Seo<sup>1</sup>
                 </a>
                 <span style="padding-left: 20px;"></span>
@@ -136,12 +116,6 @@
                                     <h4><strong>Code</strong></h4>
                             </a>
                         </li>
-                        <!-- <li>
-                            <a href="https://huggingface.co/spaces/hamacojr/CAT-Seg" target="_blank">
-                            <image src="img/huggingface_logo-noborder.svg" height="60px">
-                                <h4><strong>Demo</strong></h4>
-                            </a>
-                        </li> -->
                     </ul>
                 </div>
         </div>
@@ -155,7 +129,7 @@
                     <div class="text-justify">
                         <img src="./img/motivation.png" width="100%">
                     </div>
-                    
+                    <br>
                     <div class="text-justify">
                         Upon observing the highly biased viewpoint and human
                         pose distributions in training dataset, we augment the dataset by manipulating SMPL body shapes
@@ -192,6 +166,7 @@
                 <div class="text-center">
                     <img src="./img/main_figure.png" width="100%">
                 </div>
+                <br>
                 <div class="text-justify">
                     Given the viewpoint and pose distributions, we first render the body shape sampled from the distribution using SMPL, 
                     generating the corresponding skeleton, depth map, and normal maps. These conditions, along with a reference image 
@@ -212,13 +187,11 @@
                 <div class="text-center">
                     <img src="./img/design_table.png" width="100%">
                 </div>
-                <div class="text-justify">
-                    Quantitative validation of our design choices.
-                </div>
                 <br>
                 <div class="text-center">
                     <img src="./img/dist_vis.png" width="100%">
                 </div>
+                <br>
                 <div class="text-justify">
                     Visualization of camera viewpoint and human pose distributions for the Market-1501 and
                     DukeMTMC-reID datasets. The left figures (i) display the camera viewpoint distribution derived
@@ -236,17 +209,16 @@
                 <h3>
                     Qualitative Results
                 </h3>
-
-                <div class="text-justify">
-                    Given a reference image, we sample five images
-                    generated by our method. These outputs demonstrate the model’s capability to produce diverse and
-                    realistic variations. Ref. denotes the reference image.
-                </div>
                 <br>
                 <div class="text-center">
                     <img src="./img/generated_images.png" width="80%">
                 </div>
                 <br>
+                <div class="text-justify">
+                    Given a reference image, we sample five images
+                    generated by our method. These outputs demonstrate the model’s capability to produce diverse and
+                    realistic variations. Ref. denotes the reference image.
+                </div>
                 <br>
             </div>
         </div>
@@ -259,6 +231,7 @@
                 <div class="text-center">
                     <img src="./img/compare_quals.png" width="80%">
                 </div>
+                <br>
                 <div class="text-justify">
                     Qualitative comparison for the generated output of FD-GAN and XingGAN. Our method demonstrates 
                     significantly better fidelity while faithfully capturing the identity of the person in the reference 
