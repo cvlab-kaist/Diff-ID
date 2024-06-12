@@ -160,7 +160,13 @@ span.highlight {
 	margin-right: 0.5em;
 }
 
-.author-table, th, td {
+.author-table {
+  margin: 10px auto; /* Center the table */
+  table-layout: fixed;
+  width: 50%; /* Set the width of the table */
+}
+
+/* .author-table, th, td {
     table-layout: fixed;
     vertical-align: top;
     margin-left: auto;
@@ -169,7 +175,7 @@ span.highlight {
     width: auto;
     min-width: 50%;
     padding: 3px;
-}
+} */
 
 .video-compare-container {
   width: 63%;
@@ -202,4 +208,19 @@ span.highlight {
     width: 100%;
     overflow:hidden;
     display:block;
+}
+
+.gan-compare-container {
+  display: grid;
+  grid-template-columns: 40% 1fr;
+  gap: 20px; /* Adds space between the columns */
+  align-items: center; /* Aligns items vertically centered */
+}
+
+.left {
+  width: 100%
+}
+
+.right {
+  text-align: justify;
 }

@@ -16,7 +16,6 @@
     <meta property="og:url" content="https://ku-cvlab.github.io/Diff-ID/">
     <meta property="og:title" content="Pose-Diversified Augmentation with Diffusion Model for Person Re-Identification">
     <meta property="og:description" content="">
-
     <!-- <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Pose-Diversified Augmentation with Diffusion Model for Person Re-Identification">
     <meta name="twitter:description" content="Person re-identification (Re-ID) often faces challenges due to variations in human pose and camera viewpoint, which significantly affects the appearance variations of individuals across images. Existing datasets often lack diversity and scalability of these human pose and camera viewpoint, hindering the generalization of Re-ID models to new camera networks. Previous methods have attempted to address these issues by using data augmentation, but they rely on poses already present in the dataset, failing to effectively reduce the pose bias in the dataset. In this paper, we propose \textbf{Diff-ID}, a novel approach that augments training data with sparse and limited poses that are underrepresented in the original distribution. By leveraging the knowledge of pre-trained large-scale generative models like Stable Diffusion, we successfully generate realistic images with diverse human poses and camera viewpoints. Specifically, our objective is to create a training dataset that enables existing Re-ID models to learn features debiased to pose variations. Qualitative results demonstrate the effectiveness of our method in addressing pose bias and enhancing the generalizability of Re-ID models compared to other approaches. The performance gains achieved by training Re-ID models on our offline augmented dataset highlight the potential of our proposed framework in improving the scalability and generalizability of person Re-ID models.">
@@ -126,23 +125,11 @@
                 <div class="col-sm-6 col-sm-offset-3 text-center">
                     <ul class="nav nav-pills nav-justified">
                         <li>
-                            <a href="https://arxiv.org/abs/2303.11797">
+                            <a href="">
                             <img src="./img/paper_image.png" height="60px">
                                 <h4><strong>Paper</strong></h4>
                             </a>
                         </li>
-                        <!-- <li>
-                            <a href="https://youtu.be/qrdRH9irAlk">
-                            <img src="./img/youtube_icon.png" height="60px">
-                                <h4><strong>Video</strong></h4>
-                            </a>
-                        </li> -->
-                        <!-- <li>
-                            <a href="https://storage.googleapis.com/gresearch/refraw360/ref.zip" target="_blank">
-                            <image src="img/database_icon.png" height="60px">
-                                <h4><strong>Shiny Dataset</strong></h4>
-                            </a>
-                        </li>-->
                         <li>
                             <a href="https://github.com/KU-CVLAB/Diff-ID" target="_blank">
                                 <img src="img/github.png" height="60px">
@@ -165,15 +152,19 @@
                     Overview
                 </h3> -->
                 <div class="text-center">
-                    <img src="./img/motivation.png" width="100%">
+                    <div class="text-justify">
+                        <img src="./img/motivation.png" width="100%">
+                    </div>
+                    
+                    <div class="text-justify">
+                        Upon observing the highly biased viewpoint and human
+                        pose distributions in training dataset, we augment the dataset by manipulating SMPL body shapes
+                        and feeding the rendered shapes into a generative model to fill in sparsely distributed poses and
+                        viewpoints. With this augmented dataset, we can train a Re-ID model that is robust to viewpoint and
+                        human pose biases.
+                    </div>
                 </div>
-                <div class="text-justify">
-                    Upon observing the highly biased viewpoint and human
-                    pose distributions in training dataset, we augment the dataset by manipulating SMPL body shapes
-                    and feeding the rendered shapes into a generative model to fill in sparsely distributed poses and
-                    viewpoints. With this augmented dataset, we can train a Re-ID model that is robust to viewpoint and
-                    human pose biases.
-                </div>
+                
                 <br>
             </div>
         </div>
@@ -273,15 +264,24 @@
                     image and accurately following the target pose.
                 </div>
                 <br>
-                <div class="text-center">
-                    <img src="./img/compare_table.png" width="40%">
+                <br>
+                <div class="gan-compare-container">
+                    <div class="left">
+                        <img src="./img/compare_table.png" width="100%">
+                    </div>
+                    <div class="right">
+                        <p>
+                            Quantitative comparison on standard Re-ID benchmarks.
+                            Note that the Re-ID Experts in the first row group are not directly comparable, as our primary focus is on dataset generation.
+                            For augmentation-based methods, we train the same Re-ID model on the datasets generated by each
+                            method to ensure a fair comparison.
+                            <br>
+                            *: The authors did not provide a pre-trained model.
+                        </p>
+                        
+                    </div>
                 </div>
-                <div class="text-justify">
-                    Quantitative comparison on standard Re-ID benchmarks.
-                    Note that the Re-ID Experts in the first row group are not directly comparable, as our primary focus is on dataset generation.
-                    For augmentation-based methods, we train the same Re-ID model on the datasets generated by each
-                    method to ensure a fair comparison. *: The authors did not provide a pre-trained model.
-                </div>
+                
                 <br>
             </div>
         </div>
