@@ -224,3 +224,9 @@ span.highlight {
 .right {
   text-align: justify;
 }
+
+.bibtex {
+  font-family: monospace;
+  font-size: 10px;
+  color: black;
+}
