@@ -12,7 +12,7 @@
     <meta property="og:image:height" content="630">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://ku-cvlab.github.io/Diff-ID/">
-    <meta property="og:title" content="Pose-Diversified Augmentation with Diffusion Model for Person Re-Identification">
+    <meta property="og:title" content="Pose-Diversified Augmentation for Person Re-Identification">
     <meta property="og:description" content="">
 
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -32,7 +32,8 @@
     <div class="container" id="header" style="text-align: center; margin: auto;">
         <div class="row" id="title-row" style="max-width: 100%; margin: 0 auto; display: inline-block">
             <h2 class="col-md-12 text-center" id="title">
-                Pose-Diversified Augmentation with Diffusion Model <br> for Person Re-Identification <br>
+                <!-- Pose-Diversified Augmentation with Diffusion Model <br> for Person Re-Identification <br> -->
+                Pose-dIVE : Pose-Diversified Augmentation for Person Re-Identification <br>
                 <small>
                     Arxiv 2024
                 </small>
@@ -45,18 +46,18 @@
                 </a>
                 <span style="padding-left: 20px;"></span>
                 <a style="text-decoration:none" href="https://github.com/joungbinlee">
-                    JoungBin&nbsp;Lee<sup>1,</sup>*
-                </a>
-                <span style="padding-left: 20px;"></span>
-                <a style="text-decoration:none" href="https://github.com/soow0n">
-                    Soowon&nbsp;Son<sup>1</sup>
+                    JoungBin&nbsp;Lee<sup>2,</sup>*
                 </a>
                 <span style="padding-left: 20px;"></span>
                 <a style="text-decoration:none" href="https://github.com/wooj0216">
                     Woojeong&nbsp;Jin<sup>1</sup>
+                </a>
+                <span style="padding-left: 20px;"></span>
+                <a style="text-decoration:none" href="https://github.com/soow0n">
+                    Soowon&nbsp;Son<sup>2</sup>
                 </a><br>
                 <a style="text-decoration:none" href="">
-                    Kyusun&nbsp;Cho<sup>1</sup>
+                    Kyusun&nbsp;Cho<sup>2</sup>
                 </a>
                 <span style="padding-left: 20px;"></span>
                 <a style="text-decoration:none" href="https://j0seo.github.io/">
@@ -71,29 +72,32 @@
                     Seokju&nbsp;Cho<sup>1</sup>
                 </a><br>
                 <a style="text-decoration:none" href="">
-                    JeonYeol&nbsp;Baek<sup>2</sup>
+                    JeonYeol&nbsp;Baek<sup>3</sup>
                 </a>
                 <span style="padding-left: 20px;"></span>
                 <a style="text-decoration:none" href="">
-                    Byeongwon&nbsp;Lee<sup>2</sup>
+                    Byeongwon&nbsp;Lee<sup>3</sup>
                 </a>
                 <span style="padding-left: 20px;"></span>
-                <a style="text-decoration:none" href="https://cvlab.korea.ac.kr">
-                    Seungryong&nbsp;Kim<sup>1</sup>
+                <a style="text-decoration:none" href="https://cvlab.kaist.ac.kr/members/faculty">
+                    Seungryong&nbsp;Kim<sup>1,†</sup>
                 </a>
                 <table class="author-table" id="author-table">
                     <tr>
                         <td>
-                            <sup>1</sup>Korea University
+                            <sup>1</sup>KAIST
                         </td>
                         <td>
-                            <sup>2</sup>SKT
+                            <sup>2</sup>Korea University
+                        </td>
+                        <td>
+                            <sup>3</sup>SKT
                         </td>
                     </tr>
                 </table>
-                <small>
-                    *Equal Contribution
-                </small>
+                <span class="author-block"><small><sup>*</sup>Equal Contribution</small></span>
+                <br>
+                <span class="author-block"><small><sup>†</sup>Corresponding Author</small></span>
             </div>
         </div>
     </div>
@@ -105,13 +109,13 @@
                 <div class="col-sm-6 col-sm-offset-3 text-center">
                     <ul class="nav nav-pills nav-justified">
                         <li>
-                            <a href="">
-                            <img src="./img/paper_image.png" height="60px">
+                            <a href="https://arxiv.org/abs/2406.16042">
+                            <img src="./img/paper_image.jpg" height="60px">
                                 <h4><strong>Paper</strong></h4>
                             </a>
                         </li>
                         <li>
-                            <a href="https://github.com/KU-CVLAB/Diff-ID" target="_blank">
+                            <a href="https://github.com/cvlab-kaist/Diff-ID" target="_blank">
                                 <img src="img/github.png" height="60px">
                                     <h4><strong>Code</strong></h4>
                             </a>
@@ -122,52 +126,61 @@
         
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
+                <br>
                 <div class="text-center">
-                    <img src="./img/teaser.png" width="100%">
-                    <div class="text-justify">
-                        Samples of generated images from the reference identity by our Diff-ID. 
-                        Our method can generate new human images conditioned on various poses while maintaining 
-                        the appearance of the original human identity, which are used for augmenting the training data for person
-                        re-identification (Re-ID) task.
+                    <img src="./img/Teaser.jpg" width="60%">
+                    <div class="text-justify" style="margin-top: 20px; font-size: 15px; text-align: center; width: 100%;">
+                        <strong>Pose-dIVE</strong> diversifies the viewpoint and human pose of the Re-ID dataset to help generalize
+                        <br>
+                        and improve the performance of arbitrary Re-ID models.
                     </div>
                 </div>
                 <br>
                 
+                <div class="row" style="width: 100%; margin: 0;">
+                    <div>
+                        <h3>
+                            Abstract
+                        </h3>
+                        <p class="text-justify" style="width: 100%;">
+                            Person re-identification (Re-ID) often faces challenges due to variations in human pose and camera viewpoint, which significantly affects the appearance variations of individuals across images.
+                            Existing datasets often lack diversity and scalability of these human pose and camera viewpoint, hindering the generalization of Re-ID models to new camera networks.
+                            Previous methods have attempted to address these issues by using data augmentation, but they rely on poses already present in the dataset, failing to effectively reduce the pose bias in the dataset.
+                            In this paper, we propose <strong>Pose-dIVE</strong>, a novel approach that augments training data with sparse and limited poses that are underrepresented in the original distribution.
+                            By leveraging the knowledge of pre-trained large-scale generative models like Stable Diffusion, we successfully generate realistic images with diverse human poses and camera viewpoints.
+                            Specifically, our objective is to create a training dataset that enables existing Re-ID models to learn features debiased to pose variations.
+                            Qualitative results demonstrate the effectiveness of our method in addressing pose bias and enhancing the generalizability of Re-ID models compared to other approaches.
+                            The performance gains achieved by training Re-ID models on our offline augmented dataset highlight the potential of our proposed framework in improving the scalability and generalizability of person Re-ID models.
+                        </p>
+                    </div>
+                </div>
+            
+                <br>
+                <br>
+
                 <h3>
-                    Overview
+                    Motivation and Overview
                 </h3>
                 <div class="text-center">
-                    
+                    <br>
                     <div class="text-justify">
-                        <img src="./img/motivation.png" width="100%">
+                        <img src="./img/tsne.jpg" width="100%">
                     </div>
                     <br>
                     <div class="text-justify">
-                        Upon observing the highly biased viewpoint and human
-                        pose distributions in training dataset, we augment the dataset by manipulating SMPL body shapes
-                        and feeding the rendered shapes into a generative model to fill in sparsely distributed poses and
-                        viewpoints. With this augmented dataset, we can train a Re-ID model that is robust to viewpoint and
-                        human pose biases.
+                        <strong>Visualization of the effect of viewpoint and human pose augmentation.</strong> We compare visualizations of camera
+                        viewpoint and human pose distributions for the Market-1501. The left figures (i) display the camera view-
+                        point distribution derived from SMPL, while the right figures (ii) illustrate the pose distribution. In (i), from left to right, we
+                        show the viewpoint distributions of the training dataset, the augmented dataset, and the combination of both. Similarly, in (ii),
+                        from left to right, we present t-SNE visualizations of the human pose distributions, showing
+                        poses from the training dataset, followed by augmented poses sourced from outside the dataset. These visualizations demon-
+                        strate that our pose augmentation successfully diversifies both viewpoint and human pose distributions.
                     </div>
                 </div>
                 
                 <br>
             </div>
         </div>
-
-
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <h3>
-                    Abstract
-                </h3>
-                <p class="text-justify">
-                    Person re-identification (Re-ID) often faces challenges due to variations in human pose and camera viewpoint, which significantly affects the appearance variations of individuals across images. Existing datasets often lack diversity and scalability of these human pose and camera viewpoint, hindering the generalization of Re-ID models to new camera networks. Previous methods have attempted to address these issues by using data augmentation, but they rely on poses already present in the dataset, failing to effectively reduce the pose bias in the dataset. In this paper, we propose Diff-ID, a novel approach that augments training data with sparse and limited poses that are underrepresented in the original distribution. By leveraging the knowledge of pre-trained large-scale generative models like Stable Diffusion, we successfully generate realistic images with diverse human poses and camera viewpoints. Specifically, our objective is to create a training dataset that enables existing Re-ID models to learn features debiased to pose variations. Qualitative results demonstrate the effectiveness of our method in addressing pose bias and enhancing the generalizability of Re-ID models compared to other approaches. The performance gains achieved by training Re-ID models on our offline augmented dataset highlight the potential of our proposed framework in improving the scalability and generalizability of person Re-ID models.    
-                </p>
-            </div>
-    
-        </div>
-        <br>
         <br>
 
         <div class="row">
@@ -176,7 +189,7 @@
                     Main Architecture
                 </h3>
                 <div class="text-center">
-                    <img src="./img/main_figure.png" width="100%">
+                    <img src="./img/architecture.jpg" width="100%">
                 </div>
                 <br>
                 <div class="text-justify">
@@ -197,19 +210,18 @@
                     The Effect of Viewpoint and Human Pose Augmentation 
                 </h3>
                 <div class="text-center">
-                    <img src="./img/design_table.png" width="100%">
+                    <img src="./img/ablation.png" width="100%">
                 </div>
                 <br>
-                <div class="text-center">
+                <!-- <div class="text-center">
                     <img src="./img/dist_vis.png" width="100%">
-                </div>
-                <br>
+                </div> -->
                 <div class="text-justify">
-                    Visualization of camera viewpoint and human pose distributions for the Market-1501 and
-                    DukeMTMC-reID datasets. The left figures (i) display the camera viewpoint distribution derived
-                    from SMPL, while the right figures (ii) illustrate t-SNE visualizations of the human pose distributions.
-                    These visualizations demonstrate that our pose augmentation successfully
-                    diversifies both viewpoint and human pose distributions.
+                    <strong>Quantitative validation of Pose-dIVE augmentation strategies.</strong>
+                    We conduct an ablation study using CLIP-ReID to verify the effectiveness of our viewpoint and human pose augmentation.
+                    (I) serves as the baseline, representing a Re-ID model trained on the original dataset without our augmentation.
+                    For (II) and (III), we augment viewpoints and human poses, respectively.
+                    (IV) demonstrates the full augmentation strategy of our model.
                 </div>
                 <br>
                 <br>
@@ -223,22 +235,21 @@
                 </h3>
                 <br>
                 <div class="text-center">
-                    <img src="./img/generated_images.png" width="80%">
+                    <img src="./img/main_qual.jpg" width="70%">
                 </div>
                 <br>
                 <div class="text-justify">
-                    Given a reference image, we sample five images
-                    generated by our method. These outputs demonstrate the model’s capability to produce diverse and
-                    realistic variations. Ref. denotes the reference image.
+                    Example images from the augmented MSMT17 and Market-1501 dataset demonstrate
+                    how the generated images preserve original identities while maintaining realism and consistency with the Re-ID dataset.
                 </div>
                 <br>
             </div>
         </div>
 
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <h3>
-                    GAN-based Models
+                    Comparison with GAN-based Models
                 </h3>
                 <div class="text-center">
                     <img src="./img/compare_quals.png" width="80%">
@@ -270,24 +281,56 @@
                 
                 <br>
             </div>
-        </div>
+        </div> -->
 
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <h3>
+                    Quantitative Results
+                </h3>
+                <br>
+                <div class="text-center">
+                    <img src="./img/main_quan.png" width="100%">
+                </div>
+                <br>
+                <div class="text-justify">
+                    Since our generative augmentation can be applied to any Re-ID model,
+                    we trained two recent state-of-the-art baselines (CLIP-ReID, SOLIDER) with Pose-dIVE.
+                </div>
+                <br>
+            </div>
+        </div>
+
+        <!-- <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
                     Citation
                 </h3>
-                <div class="form-group col-md-10 col-md-offset-1 bibtex">
-                    <div>
-                        @misc{kim2024posediversified, <br>
-                        &nbsp; &nbsp; title={Pose-Diversified Augmentation with Diffusion Model for Person Re-Identification}, <br>
-                        &nbsp; &nbsp; author={Inès Hyeonsu Kim and JoungBin Lee and Soowon Son and Woojeong Jin and Kyusun Cho and Junyoung Seo and Min-Seop Kwak and Seokju Cho and JeongYeol Baek and Byeongwon Lee and Seungryong Kim}, <br>
-                        &nbsp; &nbsp; year={2024}, <br>
-                        &nbsp; &nbsp; eprint={2406.16042}, <br>
-                        &nbsp; &nbsp; archivePrefix={arXiv}, <br>
-                        &nbsp; &nbsp; primaryClass={id='cs.CV' full_name='Computer Vision and Pattern Recognition' is_active=True alt_name=None in_archive='cs' is_general=False description='Covers image processing, computer vision, pattern recognition, and scene understanding. Roughly includes material in ACM Subject Classes I.2.10, I.4, and I.5.'}
-                    </div>
-                </div>
+                <pre style="white-space: pre; overflow-x: auto;">
+                    <code>@misc{kim2024posediveposediversifiedaugmentationdiffusion,
+                        title={Pose-dIVE: Pose-Diversified Augmentation with Diffusion Model for Person Re-Identification}, 
+                        author={Inès Hyeonsu Kim and JoungBin Lee and Woojeong Jin and Soowon Son and Kyusun Cho and Junyoung Seo and Min-Seop Kwak and Seokju Cho and JeongYeol Baek and Byeongwon Lee and Seungryong Kim},
+                        year={2024},
+                        eprint={2406.16042},
+                        archivePrefix={arXiv},
+                        primaryClass={cs.CV},
+                        url={https://arxiv.org/abs/2406.16042}, 
+                    }
+                    </code>
+                </pre>
+            </div>
+        </div> -->
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <p id="bibtex"><b>Bibtex</b></p>
+                <pre style="background: #eee; white-space: pre; -webkit-overflow-scrolling: touch; border: none; border-radius: 0; padding: 15px;">
+@article{kim2024pose,
+    title={Pose-DIVE: Pose-Diversified Augmentation with Diffusion Model for Person Re-Identification},
+    author={Kim, In{\`e}s Hyeonsu and Lee, JoungBin and Jin, Woojeong and Son, Soowon and Cho, Kyusun and Seo, Junyoung and Kwak, Min-Seop and Cho, Seokju and Baek, JeongYeol and Lee, Byeongwon and others},
+    journal={arXiv preprint arXiv:2406.16042},
+    year={2024}
+}</pre>
             </div>
         </div>
 
