@@ -3,7 +3,7 @@
     
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <title>Diff-ID</title>
+    <title>Pose-dIVE</title>
 
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,7 +11,7 @@
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://ku-cvlab.github.io/Diff-ID/">
+    <meta property="og:url" content="https://cvlab-kaist.github.io/Pose-dIVE/">
     <meta property="og:title" content="Pose-Diversified Augmentation for Person Re-Identification">
     <meta property="og:description" content="">
 
@@ -115,7 +115,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="https://github.com/cvlab-kaist/Diff-ID" target="_blank">
+                            <a href="https://github.com/cvlab-kaist/Pose-dIVE" target="_blank">
                                 <img src="img/github.png" height="60px">
                                     <h4><strong>Code</strong></h4>
                             </a>
@@ -193,11 +193,12 @@
                 </div>
                 <br>
                 <div class="text-justify">
-                    Given the viewpoint and pose distributions, we first render the body shape sampled from the distribution using SMPL, 
-                    generating the corresponding skeleton, depth map, and normal maps. These conditions, along with a reference image 
-                    for identity preservation, are then fed into Diff-ID. Diff-ID consists of two branches: the reference U-Net processes 
-                    the identity information from the reference image, while the denoising U-Net generates a person with the same identity, 
-                    given the input conditions. The denoising U-Net generates images by iterating through the denoising process.
+                    Given the viewpoint and pose distributions, we first render
+                the body shape sampled from the distribution using SMPL, generating the corresponding skeleton, depth map, and normal
+                maps. These conditions, along with a reference image for identity preservation, are then fed into generative module, which
+                consists of two branches: the reference U-Net processes the identity information from the reference image, while the denoising
+                U-Net generates a person with the same identity, given the input conditions. The denoising U-Net generates images by iterating
+                through the denoising process.
                 </div>
                 <br>
                 <br>
